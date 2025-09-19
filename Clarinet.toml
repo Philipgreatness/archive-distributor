@@ -1,21 +1,39 @@
 [project]
 name = "archive-distributor"
-description = ""
-authors = []
+authors = ["Stacks Developer"]
+description = "Decentralized archive distribution and management platform"
 telemetry = false
-cache_dir = "./.cache"
+requirements = []
 
-# [contracts.counter]
-# path = "contracts/counter.clar"
+[contracts.archive-access-manager]
+path = "contracts/archive-access-manager.clar"
+depends_on = []
+
+[contracts.archive-event-log]
+path = "contracts/archive-event-log.clar"
+depends_on = []
+
+[contracts.archive-adapter]
+path = "contracts/archive-adapter.clar"
+depends_on = []
+
+[contracts.archive-registry]
+path = "contracts/archive-registry.clar"
+depends_on = []
+
+[contracts.archive-distributor]
+path = "contracts/archive-distributor.clar"
+depends_on = []
+
+[repl]
+costs_version = 2
+parser_version = 2
 
 [repl.analysis]
 passes = ["check_checker"]
-check_checker = { trusted_sender = false, trusted_caller = false, callee_filter = false }
 
-# Check-checker settings:
-# trusted_sender: if true, inputs are trusted after tx_sender has been checked.
-# trusted_caller: if true, inputs are trusted after contract-caller has been checked.
-# callee_filter: if true, untrusted data may be passed into a private function without a
-# warning, if it gets checked inside. This check will also propagate up to the
-# caller.
-# More informations: https://www.hiro.so/blog/new-safety-checks-in-clarinet
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
